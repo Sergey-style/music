@@ -1,0 +1,594 @@
+
+
+*{
+	padding:0;
+	margin:0;
+	border:0;
+}
+*,*:before,*:after{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+:fokus,:active{outline:none;}
+a:focus,a:active{outline:none;}
+
+nav,footer,header,aside{display:block;}
+html,body{
+	height:100%;
+	width:100%;
+	font-size:100%;
+	line-height:1;
+	font-size:14px;
+	-ms-text-size-adjust:100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display:none;}
+button{cursor:pointer;}
+button::-moz-fokus-inner{padding:0;border:0;}
+a,a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+ul li{list-style:none;}
+img{vertical-align:top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:400}
+/*стили для демонстрации*/
+*,*:before,*:after{
+	padding:0;
+	margin:0;
+	border:0;
+	box-sizing:border-box;
+}
+
+font-family: 'Nunito', sans-serif;
+font-family: 'Nunito Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+html,body{
+	height: 100%;
+}
+body{
+
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.content{
+	flex: 1 1 auto;
+}
+
+/*основные стили*/
+.container {/*ограничеваем наш контэйнер(текст,лого,меню) по ширине*/
+	max-width: 1180px;
+	margin: 0px auto;
+	padding: 0px 10px;
+}
+/*-------------------------------------------header-----------------------------*/
+.header {
+	position: fixed;/*фиксация плашки на верху*/
+	width:100%;
+	top: 0 ;
+	left: 0;
+	z-index: 50;
+}
+.header:before{/*оформление плашки на которой находятся логтип,меню,бургер*/
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color:#000000;
+	z-index: 2;
+}
+
+.header_body {/*логтип,меню,бургер*/
+	position: relative;
+	display: flex;/*буквы поднимаются и заезжают на логотип*/
+	justify-content: space-between;/*слова(меню) и логотип разбрасуются в разные стороны*/
+	height: 100px;/*плашка уменьшается до 80px*/
+	align-items: center;/*выстраеваем контент по горизонтале*/
+}
+.header_logo {/*оформление логотипа*/
+	font-family: 'Open Sans';
+	font-size: 24px;
+	line-height: 18px;
+	font-weight: 700;
+	color: #f23005;
+	outline: hidden;
+	position: relative;
+	z-index: 3;
+}
+.header_logo span{
+	color: #ffffff;
+}
+
+.header_logo img{
+	max-width: 100%;/*любая картинка теперь сможет подстроится под наш размер*/
+	display: block;/*картинка будет без подрезания*/
+}
+
+.header_burger {/*скрываем бургер для размеров выше 767px*/
+   display: none;
+}
+
+.header_list {
+	display: flex;/*колонка с меню превращается в строку и она помещается на плашке*/
+	position: relative;
+	z-index: 2;
+}
+.header_list li{/*отступ между словами в меню*/
+	list-style: none;
+	margin: 0 0 0 20px;
+}
+.header_link {/*оформление меню(слов)*/
+	font-family: Nunito;
+	font-size: 20px;
+	line-height: 14px;
+	font-weight: 400;
+	letter-spacing: 0.015em;
+	color: #bab8b8;
+}
+.header_link:hover {
+   color:  #f23005;
+   transition: 0.5s;
+}
+
+.content {/*отступ текста от шапки сайта*/
+	padding: 100px 0 0 0;
+}
+
+@media (max-width: 767px){/*медиа запрос для всего что меньше 767px*/
+	    body.lock{/*блокируется скрол под выехавшем меню*/
+    	overflow: hidden;
+    }
+    .header_body{/*высота(фиолетовой) шапки уменьшаем до 50px*/
+    	height: 60px;
+    }
+    .header_logo{
+    	max-width: 50px;
+    }
+	.header_burger{
+display: block;
+position: relative;
+width: 30px;/*размеры меню бургер*/
+height: 20px;/*размеры меню бургер*/
+position: relative;
+z-index: 3;
+	}
+
+	.header_burger span{/*рисуем меню бургер, средняя полоса бургера*/
+		position: absolute;
+		background-color:   #f23005;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		top: 9px;/*поднимаем на 9px нашу полоску*/
+		transition: all 0.3s ease 0s;/*добавляет анимацию-бургер медленно превращается в крестик*/
+	}
+
+	.header_burger:before,
+	.header_burger:after{/*рисуем меню бургер*/
+		content: '';
+		background-color:   #f23005;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		transition: all 0.3s ease 0s;/*добавляет анимацию-бургер медленно превращается в крестик*/
+	}
+
+	.header_burger:before{/*верхняя полоса бургера*/
+		top: 0;
+	}
+		.header_burger:after{/*нижняя полоса бургера*/
+        bottom: 0;
+  }
+
+  .header_menu {/*оформление меню при размере меньше 767px*/
+	position: fixed;
+	top: -100%;/*меню прячется за плашку,пока не нажмешь на бургер*/
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;/*включает скрол, при горизонтальном положении можно будет добраться до всех пунктов меню */
+	transition: all 0.3s ease 0s;/*анимация меню(будет выезжать шторка с меню из плашки фиолет.)*/
+	background-color: black;
+	padding: 70px 10px 20px 10px;/*отступы меню*/
+    margin: 0 0px 0 0px;
+}
+.header_link {/*оформление меню(слов)*/
+	color:  #f23005;
+}
+.header_link:hover {
+   color: #bab8b8;
+   transition: 0.3s;
+}
+.header_menu.active{
+	top: 0;/*меню появляется при нажатии на бургер*/
+}
+    /*при нажатии на бургер появляется крестик*/
+    .header_burger.active span{
+       transform: scale(0);/*убираем среднюю палочку*/
+    }
+
+	.header_burger.active:before{/*делаем из бургера крестик*/
+		transform: rotate(45deg);
+		top: 9px;/*регулируем по высоте палочки, чтобы вышел крестик*/
+	}
+		.header_burger.active:after{/*делаем из бургера крестик*/
+		transform: rotate(-45deg);
+		bottom: 9px;/*регулируем по высоте палочки, чтобы вышел крестик*/
+  }
+
+  .header_list {/*меняем flex на block  строка с меню превращается в колонку*/
+  	display: block;
+}
+.header_list li{
+	margin: 0 0 20px 0;/*отступы между словами меню*/
+}
+.header_link{
+	font-size: 24px;/*увеличиваем шрифт меню*/
+}
+
+.content {
+	padding: 100px 0 0 0;
+}
+.content_text {/*содержимое страницы текста*/
+	font-size: 18px;
+	line-height: 25px;
+}
+.content_text p{/*отступы между параграфами текста*/
+	margin: 0 0 20px 0;
+}
+}
+@media(max-width:767px){
+	.content{
+
+		padding: 60px 0 0 0;/*возвращаем не место уменьшенной щапки контент*/
+	}
+	
+}
+/*-------------------------------------------------------------------------------------*/
+.freedom {
+	background: url('../img/layer_10_2299.png')0 0/cover no-repeat;
+	padding: 110px 0 130px 0;
+}
+.container {}
+.freedom_row {
+	max-height: 692px;
+	text-align: right;
+}
+.freedom_title {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 36px;
+line-height: 79px;
+font-weight: 100;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: #ffffff;
+margin-bottom: 25px;
+}
+.freedom_subtitle {
+		font-family: 'Helvetica Neue Cyr';
+line-height: 79px;
+text-transform: uppercase;
+
+	font-size: 80.3px;
+font-weight: 700;
+letter-spacing: normal;
+color:#ffffff;
+margin-bottom: 25px;
+}
+.freedom_subtitle span{
+		font-family: 'Helvetica Neue Cyr';
+line-height: 79px;
+text-transform: uppercase;
+
+ font-size: 80.3px;
+font-weight: 700;
+letter-spacing: normal;
+color: #f23005;
+}
+.freedom_text {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 14px;
+line-height: 1.2;
+font-weight: 100;
+letter-spacing: 0.025em;
+color: #ffffff;
+margin-bottom: 38px;
+}
+.freedom_buttons{
+	display: flex;
+	justify-content: right;
+}
+.freedom_button1 {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 11px;
+line-height: 59px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: #ffffff;
+
+border: 1px solid #ffffff;
+padding: 20px 40px 20px 40px;
+margin-right: 24px;
+}
+.freedom_button2 {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 11px;
+line-height: 59px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: #ffffff;
+
+background-color: #f23005; 
+padding: 20px 40px 20px 40px;
+
+}
+@media (max-width: 767px){
+	.freedom_title {
+		font-size: 26px;
+}
+.freedom_subtitle {
+	font-size: 70px;
+}
+
+.freedom_buttons{
+	flex-direction: column;
+}
+}
+@media (max-width: 420px){
+.freedom_title {
+ font-size: 20px;
+}
+.freedom_subtitle {
+	font-size: 50px;
+}
+.freedom_subtitle span{
+	font-size: 50px;
+}
+ .freedom {
+ 	padding: 150px 0 150px 0;
+
+}
+}
+
+/*--------------------------------------------------------------------------------*/
+.about {
+	background:#030303 url(../img/laptop_copy_357.png)no-repeat right;
+	padding: 50px 0 145px 0;
+}
+.about_row {
+	display: flex;
+	flex-direction: column;
+	justify-content: right;
+	max-width: 637px;
+	margin: 0 563px 0 100px;
+	text-align: right;
+}
+.about_up {}
+.about_lable{
+max-width: 120px;
+max-height: 120px;
+background-color: #f23005;
+margin: 50px 0px 30px 375px;
+padding: 20px 0 60px 0;
+}
+.about_title {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 24.1px;
+line-height: 1.2;
+font-weight: 700;
+letter-spacing: 0.025em;
+color: #ffffff;
+
+}
+.about_subtitle {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 8px;
+line-height: 1.2;
+font-weight: 400;
+letter-spacing: 0.145em;
+color: #ffffff;
+
+}
+.about_text {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 14px;
+line-height: 1.2;
+font-weight: 300;
+letter-spacing: 0.065em;
+color: #ffffff;
+}
+.about_down {}
+@media(max-width: 1200px){
+.about_row {
+	margin:0 auto;
+}
+.about {
+	background:#030303;
+	padding: 30px 0 70px 0;
+}
+.about_text{
+	margin: 20px 0 20px 0;
+}
+}
+/*--------------------------------------------------------------------------------*/
+.orange {
+	background-color:#f23005;
+	padding: 130px 0 120px 0;
+}
+.orange_row {
+	display: flex;
+	justify-content: space-between;
+}
+.orange_numer {
+	font-family: Roboto;
+	font-size: 64px;
+	line-height: 17px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	color: #ffffff;
+	text-align: center;
+}
+.orange_numer span{
+	display: block;
+	font-family: Roboto;
+	font-size: 16px;
+	line-height: 23px;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	color: #ffffff;
+	margin-top: 27px;
+}
+@media (max-width: 767px){
+.orange_row {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+.orange_numer {
+	margin-bottom: 80px;
+}
+.orange {
+	background-color:#f23005;
+	padding: 65px 0 60px 0;
+}
+.about_lable{
+	margin: 0 auto;
+}
+}
+/*---------------------------------------------------------------------------------*/
+.gitar {
+	background: url('../img/pryamougolnik_8_391.png')0 0/cover no-repeat;
+	padding: 246px 0 236px 0;
+}
+.gitar_row {
+	max-width: 733px;
+	text-align: right;
+}
+.gitar_title {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 18px;
+line-height: 21px;
+font-weight: 700;
+letter-spacing: 0.08em;
+color: #ffffff;
+margin-bottom: 39px;
+}
+.gitar_text {
+	font-family: 'Helvetica Neue Cyr';
+font-size: 18px;
+line-height: 21px;
+font-weight: 700;
+letter-spacing: 0.08em;
+color: #ffffff;
+
+font-size: 12px;
+font-weight: 300;
+}
+@media (max-width: 767px){
+.gitar {
+	
+	padding: 126px 10px 115px 10px;
+}
+}
+
+/*--------------------------------------------------------------------------------*/
+.main_footer {
+	padding: 76px 0 83px 0;
+	background-color:#f23005 ;
+}
+.row_footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.footer_menu {
+	
+}
+.footer_menu_items {
+	font-family: 'Nunito Sans';
+font-size: 18px;
+line-height: 49px;
+font-weight: 400;
+letter-spacing: 0.025em;
+color: #2b323a;
+	display: flex;
+	margin-bottom: 45px;
+	justify-content: space-around;
+
+}
+.footer_copyring {
+	font-family: 'Nunito Sans';
+font-size: 15px;
+line-height: 49px;
+font-weight: 600;
+letter-spacing: 0.025em;
+color: #2b323a;
+margin-bottom: 35px;
+text-align: center;
+}
+.footer_copyring span {
+	font-family: 'Nunito Sans';
+font-size: 15px;
+line-height: 49px;
+font-weight: 600;
+letter-spacing: 0.025em;
+color: #c6c6c6;
+}
+.footer_social {
+	display: flex;
+	justify-content: center;
+}
+.footer_logo_logo {
+   margin-right: 35px;
+	position: relative;
+
+}
+.footer_logo_elips {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+
+@media(max-width:767px){
+	.footer_column{
+		padding: 10px;
+	}
+	.footer_menu_items{
+		flex-direction: column;
+		text-align: center;
+	}
+}
+@media(max-width:500px){
+	.footer_social{
+		flex-direction: column;
+
+
+	}
+	.footer_logo_logo{
+		margin: 0 auto;
+		padding-bottom: 40px;
+
+	}
+	.footer_social:last-child{
+		margin-bottom: 0;
+	}
+.main_footer {
+	padding: 36px 0 43px 0;
+}
+}
+/*---------------------------------------------------------------------------*/
+
