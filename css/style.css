@@ -471,6 +471,7 @@ color: #ffffff;
 /*---------------------------------------------------------------------------------*/
 .gitar {
 	background: url('../img/pryamougolnik_8_391.png')0 0/cover no-repeat;
+	background-position: right;
 	padding: 246px 0 236px 0;
 }
 .gitar_row {
